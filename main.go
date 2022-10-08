@@ -1,19 +1,17 @@
 package main
 
 import (
-	"net/http"
+	"golang-project/models"
 
 	"github.com/gin-gonic/gin"
 )
 
 func main() {
-    router := gin.Default()  // router with default middleware installed
-    // index route
-    router.GET("/", func(c *gin.Context) {
-        c.JSON(http.StatusOK, gin.H{
-            "message": "Hello World",
-        })
-    })
-    // run the server
-    router.Run()
+    router := gin.Default()
+
+    models.ConnectDatabase()  // new!
+
+    // ...
+
+    router.Run("localhost:8080")
 }
